@@ -20,8 +20,8 @@ export default function Header({ balance }) {
       </div>
       <div className="pl-12 pr-6 py-6 sm:py-8 flex items-center justify-between gap-4 flex-wrap">
         <div>
-          <p className="uppercase tracking-[0.25em] text-xs text-[#C9A24A] font-mono mb-1">Buku Kas Digital</p>
-          <h1 className="font-serif text-3xl sm:text-4xl text-[#F5F1E8]">Pelacak Keuangan</h1>
+          <h1 className="font-serif text-3xl sm:text-4xl text-[#F5F1E8]">NexaKas</h1>
+          <p className="uppercase tracking-[0.25em] text-xs text-[#C9A24A] font-mono mb-1">Pelacak Keuangan Digital</p>
         </div>
         <div className="text-right">
           <p className="text-xs uppercase tracking-widest text-[#F5F1E8]/60 font-mono mb-1">Saldo Saat Ini</p>

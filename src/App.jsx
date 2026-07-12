@@ -11,7 +11,7 @@ export default function App() {
     filter,
     setFilter,
     totals,
-    categoryData,
+    chartData,
     addTransaction,
     deleteTransaction,
   } = useMoneyTracker();
@@ -39,7 +39,7 @@ export default function App() {
           />
 
           {/* VIEW: Analisis Chart Kategori */}
-          <CategoryBreakdown data={categoryData} />
+          <CategoryBreakdown data={chartData} filter={filter} />
           
         </div>
       </div>

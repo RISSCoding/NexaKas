@@ -18,16 +18,30 @@ export function useMoneyTracker() {
     return { income, expense, balance: income - expense };
   }, [transactions]);
 
-  // Kalkulasi data chart kategori pengeluaran
-  const categoryData = useMemo(() => {
+// Kalkulasi data chart secara dinamis berdasarkan filter
+  const chartData = useMemo(() => {
+    // 1. Jika filter "semua": Bandingkan Total Pemasukan vs Pengeluaran
+    if (filter === "semua") {
+      const income = transactions.filter((t) => t.type === "pemasukan").reduce((s, t) => s + t.amount, 0);
+      const expense = transactions.filter((t) => t.type === "pengeluaran").reduce((s, t) => s + t.amount, 0);
+      
+      const data = [];
+      if (income > 0) data.push({ name: "Pemasukan", value: income });
+      if (expense > 0) data.push({ name: "Pengeluaran", value: expense });
+      
+      return data;
+    } 
+    
+    // 2. Jika filter spesifik ("pemasukan" atau "pengeluaran"): Kelompokkan per kategori
     const map = {};
     transactions
-      .filter((t) => t.type === "pengeluaran")
+      .filter((t) => t.type === filter)
       .forEach((t) => {
         map[t.category] = (map[t.category] || 0) + t.amount;
       });
+      
     return Object.entries(map).map(([name, value]) => ({ name, value }));
-  }, [transactions]);
+  }, [transactions, filter]);
 
   // Penyaringan Riwayat Transaksi berdasarkan filter aktif
   const filteredTransactions = useMemo(() => {
@@ -48,11 +62,11 @@ export function useMoneyTracker() {
   };
 
   return {
-    filteredTransactions,
+  filteredTransactions,
     filter,
     setFilter,
     totals,
-    categoryData,
+    chartData, // Pastikan kuncinya bernama 'chartData' agar sinkron dengan App.jsx
     addTransaction,
     deleteTransaction,
   };

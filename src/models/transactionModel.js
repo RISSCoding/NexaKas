@@ -4,13 +4,25 @@ export const CATEGORIES = {
 };
 
 export const CATEGORY_COLORS = {
+  // Warna Kategori Pengeluaran
   Makanan: "#B5652B",
   Transportasi: "#3E6259",
   Belanja: "#8E6C1F",
   Hiburan: "#7A4B6B",
   Tagihan: "#6B4A3A",
   Pendidikan: "#4A5C6B",
+  
+  // Warna Kategori Pemasukan
+  "Uang Saku": "#2D5A3D",
+  Gaji: "#4CAF50",
+  Bonus: "#8BC34A",
+  
+  // Warna Default/Umum
   Lainnya: "#6B665A",
+  
+  // Warna untuk Filter "Semua" (Perbandingan Global)
+  Pemasukan: "#2D5A3D",
+  Pengeluaran: "#B34B3C"
 };
 
 const STORAGE_KEY = "digital_cash_transactions";
