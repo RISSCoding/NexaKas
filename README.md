@@ -27,3 +27,4 @@ Hasilnya ada di folder `dist/`, bisa di-deploy ke Vercel, Netlify, atau hosting 
 - Data transaksi masih tersimpan di memori (React state), jadi akan hilang saat halaman di-refresh. Kalau mau data permanen, perlu tambah localStorage atau backend/database.
 - Styling pakai Tailwind CSS, ikon pakai `lucide-react`, grafik pakai `recharts`.
 # NexaKas
+# NexaKas
