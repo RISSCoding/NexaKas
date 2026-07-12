@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Latar belakang coklat kehitaman dengan sudut membulat -->
+  <rect width="64" height="64" rx="16" fill="#26241D" />
+  
+  <!-- Garis tren naik (warna kuning cerah agar kontras dan elegan) -->
+  <path 
+    d="M 16 44 L 28 32 L 36 38 L 48 20" 
+    fill="none" 
+    stroke="#FBBF24" 
+    stroke-width="6" 
+    stroke-linecap="round" 
+    stroke-linejoin="round" 
+  />
+  
+  <!-- Ujung panah di bagian atas grafik -->
+  <path 
+    d="M 38 20 L 48 20 L 48 30" 
+    fill="none" 
+    stroke="#FBBF24" 
+    stroke-width="6" 
+    stroke-linecap="round" 
+    stroke-linejoin="round" 
+  />
+</svg>
