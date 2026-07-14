@@ -46,7 +46,7 @@ Pastikan Anda sudah menginstal [Node.js](https://nodejs.org/) di komputer Anda.
 ### Langkah Instalasi
 1. Clone repositori ini:
    ```bash
-   git clone [https://github.com/username/nexakas.git](https://github.com/username/nexakas.git)
+   git clone [https://github.com/risscoding/nexakas.git](https://github.com/risscoding/nexakas.git)
 Masuk ke dalam folder proyek:
 
 Bash
