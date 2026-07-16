@@ -1,79 +1,112 @@
 <div align="center">
-  <img src="public/favicon.svg" alt="NexaKas Logo" width="80"/>
-  <h1>📓 NexaKas - Pelacak Keuangan Digital</h1>
   
-  <p><strong>Aplikasi buku kas digital minimalis, elegan, dan 100% Open Source.</strong></p>
+  # 🪙 NexaKas
+  **Smart Personal Financial Tracker**
 
-  [![Open Source](https://img.shields.io/badge/Open_Source-100%25-brightgreen.svg?style=flat-square)](https://github.com/username/nexakas)
-  [![React](https://img.shields.io/badge/React-18.x-61DAFB.svg?style=flat-square&logo=react)](#)
-  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC.svg?style=flat-square&logo=tailwind-css)](#)
-  [![Vite](https://img.shields.io/badge/Vite-5.x-646CFF.svg?style=flat-square&logo=vite)](#)
+  <!-- Lisensi, Status, dan Demo Badges -->
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+  [![Status](https://img.shields.io/badge/Status-Active-success.svg?style=for-the-badge)]()
+  [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000.svg?style=for-the-badge&logo=vercel)](https://nexakas.vercel.app)
 
-  <h3>🚀 Akses ke website: <a href="https://nexakas.vercel.app" target="_blank">nexakas.vercel.app</a></h3>
+  <h3>
+    <a href="https://nexakas.vercel.app">🚀 Coba Live Demo NexaKas di Sini</a>
+  </h3>
+
+  <p align="center">
+    Aplikasi web cerdas untuk melacak dan memvisualisasikan arus kas pribadi Anda dengan mudah, aman, dan elegan.
+  </p>
 </div>
 
 ---
 
-## 📌 Tentang NexaKas
-**NexaKas** adalah aplikasi pelacak keuangan berbasis web yang dirancang khusus untuk mempermudah Anda mencatat arus kas (pemasukan dan pengeluaran) sehari-hari. Dibangun menggunakan arsitektur **MVC (Model-View-Controller)** yang bersih, aplikasi ini berjalan super cepat dan menyimpan data Anda dengan aman langsung di dalam perangkat Anda.
+## 🚀 Tentang Aplikasi
+
+**NexaKas** adalah aplikasi pencatatan keuangan pribadi (*personal finance tracker*) modern yang dirancang untuk membantu Anda memegang kendali penuh atas stabilitas finansial. Mengusung konsep *Dark Theme* yang minimalis dan nyaman di mata, NexaKas berfokus pada visualisasi data interaktif. Anda tidak perlu lagi membaca tabel yang membosankan; cukup lihat grafik, dan ketahui ke mana setiap Rupiah Anda mengalir.
+
+Dibangun dengan arsitektur **Clean Code**, **SOLID design**, dan **Custom Hooks**, aplikasi ini memastikan performa rendering yang sangat cepat, pengelolaan state yang optimal, dan kode yang kebal dari kesalahan (*defensive programming*).
+
+---
+
+## 🛠️ Tech Stack & Alat
+
+Dibangun menggunakan teknologi antarmuka web paling modern saat ini:
+
+<div align="center">
+
+  ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+  ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+  ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+  ![Framer Motion](https://img.shields.io/badge/Framer_Motion-black?style=for-the-badge&logo=framer&logoColor=white)
+  ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+
+</div>
+
+* **React 18**: Framework UI deklaratif dan berbasis komponen.
+* **Vite**: *Build-tool* generasi baru untuk *Hot Module Replacement* (HMR) yang secepat kilat.
+* **Tailwind CSS**: *Utility-first CSS* untuk desain *dark-mode* responsif yang presisi.
+* **Recharts**: Komponen grafik SVG modular untuk visualisasi tren data keuangan.
+* **Framer Motion**: Mesin animasi (*animation engine*) untuk transisi dan efek *pop-layout* yang halus bak aplikasi native.
+* **Lucide React**: Paket ikon vektor minimalis dan konsisten.
+
+---
 
 ## ✨ Fitur Unggulan
-* 💸 **Pencatatan Tanpa Batas:** Bebas mencatat nominal berapa pun (mendukung input nilai positif maupun negatif untuk penyesuaian saldo).
-* 📊 **Grafik Interaktif:** Visualisasi persentase pengeluaran dan pemasukan secara dinamis menggunakan *Pie Chart*.
-* 🔒 **Privasi Penuh (Guest Mode):** Tidak perlu login! Semua data disimpan dengan aman di *Local Storage* browser perangkat Anda.
-* 💾 **Backup & Restore (JSON):** Jangan takut kehilangan data. Ekspor riwayat keuangan Anda menjadi file `.json` dan impor kembali kapan saja di perangkat mana saja.
-* 🎨 **Desain Elegan & Halus:** Dibangun dengan antarmuka bernuansa *earthy tones* dan animasi transisi yang memanjakan mata.
+
+* 📊 **Dasbor Finansial Real-Time** — Pantau fluktuasi "Saldo Tersedia" secara instan. Data langsung terbarui setiap kali transaksi ditambahkan atau dihapus tanpa *loading*.
+* 📈 **Grafik Tren Arus Kas** — Grafik area interaktif memetakan aktivitas harian Anda. Lacak lonjakan pengeluaran tertinggi dalam bulan berjalan hanya dengan sekali lirik.
+* 🍰 **Porsi Kategori Otomatis (Donut Chart)** — Visualisasi cerdas yang membedah persentase pengeluaran Anda (misal: berapa persen untuk Makanan, Transportasi, atau Hiburan).
+* ⚡ **Form Transaksi Adaptif (Context-Aware)** — Opsi kategori beradaptasi otomatis! Jika Anda memilih "Pemasukan", opsi yang muncul hanyalah *Gaji/Bonus* dan *Uang Saku*. Jika memilih "Pengeluaran", opsi berubah menjadi *Makanan/Belanja*.
+* 📅 **Navigasi Kalender Bulanan** — Kelola data tanpa tercampur. Dasbor secara cerdas hanya merender transaksi sesuai filter bulan dan tahun yang sedang aktif.
+* 💾 **Auto-Save (Local Storage)** — Tanpa database terpusat, privasi 100% aman. Data Anda disimpan secara real-time di penyimpanan lokal peramban (*browser*).
+* 🛡️ **Validasi Defensif** — Mencegah kelalaian *user* dengan memblokir input nilai nominal 0, angka negatif, atau isian form yang kosong.
 
 ---
 
-## 📖 Cara Penggunaan Aplikasi
-Menggunakan NexaKas sangatlah mudah:
+## 💻 Panduan Instalasi Lokal
 
-1. **Tambah Transaksi:** Klik tombol **"+ Tambah"** di tabel Riwayat Transaksi. Pilih Pemasukan/Pengeluaran, masukkan nominal, tanggal, kategori, dan catatan opsional.
-2. **Filter Data:** Gunakan tombol filter ("Semua", "Pemasukan", "Pengeluaran") untuk menganalisis arus kas Anda. Grafik akan otomatis menyesuaikan.
-3. **Amankan Data Anda (Backup):** Klik ikon **Download** 📥 di bagian atas (sebelah saldo) untuk mengunduh file `.json` berisi seluruh data Anda.
-4. **Pulihkan Data (Restore):** Klik ikon **Upload** 📤 untuk memasukkan kembali file `.json` cadangan Anda jika Anda berpindah perangkat atau browser.
+Ikuti langkah-langkah di bawah ini untuk menjalankan **NexaKas** di komputer Anda jika Anda ingin memodifikasi atau berkontribusi.
 
----
+### 📋 Prasyarat Sistem
+Pastikan perangkat Anda sudah terinstal:
+* [Node.js](https://nodejs.org/en/) (Disarankan versi LTS, minimal v18.x)
+* `npm` atau `yarn` (Package Manager)
+* [Git](https://git-scm.com/)
 
-## 💻 Cara Menjalankan di Komputer Anda (Bagi Developer)
+### 🛠️ Langkah-langkah Instalasi
 
-Karena proyek ini **100% Open Source**, Anda sangat dipersilakan untuk mengkloning, mempelajari, atau memodifikasi kode sumbernya.
 
-### Prasyarat
-Pastikan Anda sudah menginstal [Node.js](https://nodejs.org/) di komputer Anda.
 
-### Langkah Instalasi
-1. Clone repositori ini:
-   ```bash
-   git clone [https://github.com/risscoding/nexakas.git](https://github.com/risscoding/nexakas.git)
-Masuk ke dalam folder proyek:
+1.  Klon Repositori Proyek
+Buka Terminal / Git Bash / Command Prompt Anda, lalu jalankan:
+```bash
+git clone https://github.com/RISSCodingnexakas.git
 
-Bash
+```
+2. Masuk ke Folder Proyek
+
+```bash
 cd nexakas
-Instal semua dependensi:
+```
+3. Pasang Dependensi
 
+Unduh seluruh library yang dibutuhkan (React, Vite, Tailwind, dll):
 Bash
+```bash
 npm install
-Jalankan server pengembangan lokal:
+```
+(Atau gunakan yarn install jika Anda menggunakan Yarn)
 
+4. Jalankan Server Pengembangan (Dev Server)
+
+Setelah proses unduh dependensi selesai (mencapai 100%), jalankan aplikasi:
 Bash
+```bash
 npm run dev
-Buka http://localhost:5173 di browser Anda!
+```
+5. Buka Aplikasi di Browser
 
-🛠️ Tech Stack
-Framework: React JS + Vite
+Perhatikan output di terminal Anda. Cukup klik tautan lokal yang diberikan atau buka browser secara manual dan akses URL berikut:
+```Plaintext
 
-Styling: Tailwind CSS
-
-Charts: Recharts
-
-Animation: Framer Motion
-
-Icons: Lucide React
-
-🔓 Lisensi (100% Open Source)
-Proyek ini sepenuhnya Open Source di bawah MIT License.
-Anda bebas menggunakan, memodifikasi, mendistribusikan, bahkan menggunakannya untuk tujuan komersial tanpa batasan apa pun.
-
-Built with ❤️ for a better financial tracking experience.
+http://localhost:5173
+```
