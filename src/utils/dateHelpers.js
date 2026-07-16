@@ -19,10 +19,6 @@ export function formatMonthShort(date) {
   return date.toLocaleDateString(ID_LOCALE, { month: "short" });
 }
 
-/**
- * Bangun deret harian penuh (1 s/d akhir bulan).
- * Satu-satunya tempat yang membangun seri ini — dikonsumsi langsung oleh CategoryChart.
- */
 export function buildDailySeries(transactions, selectedMonth) {
   const daysInMonth = getDaysInMonth(selectedMonth);
 
@@ -41,9 +37,6 @@ export function buildDailySeries(transactions, selectedMonth) {
   return Object.values(dailyMap).sort((a, b) => a.dayIndex - b.dayIndex);
 }
 
-/**
- * Ticks sumbu-X dengan jarak merata, otomatis menyesuaikan panjang bulan.
- */
 export function buildEvenTicks(totalDays, interval = 5) {
   const ticks = [];
   for (let day = 1; day <= totalDays; day += interval) ticks.push(day);

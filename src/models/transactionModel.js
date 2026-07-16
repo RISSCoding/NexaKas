@@ -12,7 +12,6 @@ export const FILTER_TYPES = [
   TRANSACTION_TYPES.PENGELUARAN,
 ];
 
-// Pemisahan Kategori Berdasarkan Tipe Transaksi
 export const CATEGORIES_BY_TYPE = {
   [TRANSACTION_TYPES.PEMASUKAN]: ["Uang Saku", "Bonus", "Lainnya"],
   [TRANSACTION_TYPES.PENGELUARAN]: ["Makanan", "Transportasi", "Belanja", "Hiburan", "Lainnya"],

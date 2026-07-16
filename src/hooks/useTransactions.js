@@ -1,16 +1,17 @@
 import { useState, useMemo, useEffect } from "react";
-import { SEED_TRANSACTIONS, TRANSACTION_TYPES } from "../models/transactionModel";
+import { TRANSACTION_TYPES } from "../models/transactionModel";
 import { buildDailySeries } from "../utils/dateHelpers";
+import { exportTransactionsToExcel, importTransactionsFromExcel } from "../utils/excelHandler";
 
 const STORAGE_KEY = "hexa_kas_tx";
 
 function loadFromStorage() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    return saved ? JSON.parse(saved) : SEED_TRANSACTIONS;
+    return saved ? JSON.parse(saved) : [];
   } catch (error) {
-    console.error("Gagal memuat data dari localStorage, menggunakan seed data:", error);
-    return SEED_TRANSACTIONS;
+    console.error("Gagal memuat data dari localStorage, menginisialisasi dengan data kosong:", error);
+    return [];
   }
 }
 
@@ -64,8 +65,23 @@ export function useTransactions(selectedMonth, filterType) {
   };
 
   const deleteTransaction = (id) => {
-    setTransactions((prev) => prev.filter((tx) => tx.id !== id));
+      setTransactions((prev) => prev.filter((tx) => tx.id !== id));
   };
+
+  const importBackupData = async (file) => {
+      try {
+        const validatedData = await importTransactionsFromExcel(file);
+
+        setTransactions(validatedData);
+        alert(`Berhasil merestore ${validatedData.length} data transaksi dari Excel!`);
+      } catch (error) {
+        alert(`Gagal Import: ${error.message}`);
+      }
+    };
+
+  const exportBackupData = () => {
+      exportTransactionsToExcel(transactions);
+    };
 
   return {
     transactions,
@@ -75,5 +91,7 @@ export function useTransactions(selectedMonth, filterType) {
     dailyActivityData,
     addTransaction,
     deleteTransaction,
+    importBackupData,
+    exportBackupData,
   };
 }

@@ -9,7 +9,6 @@ export function formatRupiah(amount) {
 }
 
 /**
- * Singkat angka rupiah: 1.2jt / 500rb
  * @param {number} n
  * @param {{ withPrefix?: boolean }} options
  */
