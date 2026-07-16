@@ -79,7 +79,7 @@ Pastikan perangkat Anda sudah terinstal:
 1.  Klon Repositori Proyek
 Buka Terminal / Git Bash / Command Prompt Anda, lalu jalankan:
 ```bash
-git clone https://github.com/RISSCodingnexakas.git
+git clone https://github.com/RISSCoding/nexakas.git
 
 ```
 2. Masuk ke Folder Proyek
