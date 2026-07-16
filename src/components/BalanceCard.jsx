@@ -11,6 +11,8 @@ const TOOLTIP_STYLE = {
   fontSize: "11px",
 };
 
+// --- Sub Komponen: Ikon & State Kosong ---
+
 function EmptyIcon({ filterType }) {
   const cls = "w-6 h-6 text-gray-600";
   if (filterType === TRANSACTION_TYPES.PEMASUKAN) {
@@ -54,11 +56,21 @@ function EmptyState({ filterType }) {
   );
 }
 
+// --- Logika Kalkulasi ---
+
 function buildPieData(filterType, totals, transactions) {
-  if (filterType === TRANSACTION_TYPES.SEMUA) {
+  if (filterType === "semua") {
+    if (totals.pengeluaran > totals.pemasukan) {
+      return [
+        { name: "Terpakai", value: totals.pengeluaran, color: "#EF4444" }, // 100% Merah
+        { name: "Sisa Saldo",       value: 0,                  color: "#10B981" }, // 0% Hijau
+      ];
+    }
+
+    const sisaSaldo = totals.pemasukan - totals.pengeluaran;
     return [
-      { name: "Pemasukan",   value: totals.pemasukan,   color: "#16A34A" },
-      { name: "Pengeluaran", value: totals.pengeluaran, color: "#EA580C" },
+      { name: "Terpakai",   value: totals.pengeluaran, color: "#EF4444" },
+      { name: "Sisa Saldo", value: sisaSaldo,          color: "#10B981" },
     ];
   }
 
@@ -76,11 +88,60 @@ function buildPieData(filterType, totals, transactions) {
   }));
 }
 
+// --- Sub Komponen: Smart Legend (Teks Persentase) ---
+
+function PieLegend({ dataPie, currentTotal, filterType, totals }) {
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 px-2 max-h-[55px] overflow-y-auto">
+      {dataPie.map((item, index) => {
+        let pctText = "";
+
+        if (filterType === "semua") {
+          // KASUS EKSTREM: Pemasukan masih 0, tapi sudah ada pengeluaran
+          if (totals.pemasukan === 0 && totals.pengeluaran > 0) {
+            pctText = item.name.includes("Terpakai") ? ">100% (Defisit)" : "0%";
+          }
+          // KASUS OVERSPENDING: Pemasukan ada, tapi pengeluaran LEBIH BESAR
+          else if (totals.pengeluaran > totals.pemasukan) {
+            if (item.name.includes("Terpakai")) {
+              const rasioOverspent = Math.round((totals.pengeluaran / totals.pemasukan) * 100);
+              pctText = `${rasioOverspent}% (Overspent)`;
+            } else {
+              pctText = "0%";
+            }
+          }
+          // KONDISI NORMAL
+          else if (totals.pemasukan > 0) {
+            const rasio = Math.round((item.value / totals.pemasukan) * 100);
+            pctText = `${rasio}%`;
+          } else {
+            pctText = "0%";
+          }
+        } else {
+          // Logika normal untuk filter porsi per kategori (Pemasukan/Pengeluaran saja)
+          const pct = currentTotal > 0 ? Math.round((item.value / currentTotal) * 100) : 0;
+          pctText = `${pct}%`;
+        }
+
+        return (
+          <div key={index} className="flex items-center gap-1.5 text-[11px] text-gray-300">
+            <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }} />
+            <span className="truncate max-w-[80px]">{item.name}</span>
+            <strong className="text-white text-[10px] font-semibold">{pctText}</strong>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// --- Komponen Utama ---
+
 export default function BalanceCard({ transactions, totals, filterType }) {
   const netBalance = totals.pemasukan - totals.pengeluaran;
   const dataPie = useMemo(() => buildPieData(filterType, totals, transactions), [filterType, totals, transactions]);
   const currentTotal = useMemo(() => dataPie.reduce((sum, item) => sum + item.value, 0), [dataPie]);
-  const isEmpty = currentTotal === 0;
+  const isEmpty = currentTotal === 0 && totals.pengeluaran === 0; // Pastikan kosong benar-benar 0
   const cardTitle = filterType === TRANSACTION_TYPES.SEMUA ? "Saldo Tersedia" : `Porsi ${filterType}`;
 
   return (
@@ -117,18 +178,17 @@ export default function BalanceCard({ transactions, totals, filterType }) {
         )}
       </div>
 
-      {!isEmpty && (
-        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 px-2 max-h-[55px] overflow-y-auto">
-          {dataPie.map((item, idx) => (
-            <div key={idx} className="flex items-center gap-1.5 text-[11px] text-gray-300">
-              <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }} />
-              <span className="truncate max-w-[80px]">{item.name}</span>
-              <strong className="text-white">{Math.round((item.value / currentTotal) * 100)}%</strong>
-            </div>
-          ))}
-        </div>
+      {/* Gunakan komponen PieLegend di sini menggantikan map manual sebelumnya */}
+      {!isEmpty ? (
+        <PieLegend
+          dataPie={dataPie}
+          currentTotal={currentTotal}
+          filterType={filterType}
+          totals={totals}
+        />
+      ) : (
+        <div aria-hidden="true" />
       )}
-      {isEmpty && <div aria-hidden="true" />}
     </div>
   );
 }
